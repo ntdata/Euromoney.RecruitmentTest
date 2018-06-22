@@ -21,14 +21,15 @@ namespace ContentConsole
             TextAnalyser textAnalyser = new TextAnalyser(wordsDataStore);
             int badWordsCount = textAnalyser.CountWordsFromDatastore(content);
 
-            if (args!=null && args.Count()>0 && args[0] != "0")
+            if (args!=null && args.Count()>0 && args[0] == "0")
+            {
+                Console.WriteLine("Text filtering disabled.");
+            }
+            else
             {
                 Console.WriteLine("Text filtering enabled. Add parameter 0 at the end of the command to disable.");
                 TextFilter textFilter = new TextFilter(wordsDataStore);
                 content = textFilter.GetFilteredText(content);
-            } else
-            {
-                Console.WriteLine("Text filtering disabled.");
             }
 
             Console.WriteLine("Scanned the text:");
